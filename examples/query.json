@@ -1,0 +1,370 @@
+{
+ "kind": "bigquery#job",
+ "etag": "\"MlU7DJ55v_w1y-hjGpzQ1i7K970/drp2bA-y27tDiCYA6p7QLeErTf8\"",
+ "id": "chemikadze-internal:US.bquxjob_54e96a2_166be5c8ba7",
+ "selfLink": "https://www.googleapis.com/bigquery/v2/projects/chemikadze-internal/jobs/bquxjob_54e96a2_166be5c8ba7?location=US",
+ "jobReference": {
+  "projectId": "chemikadze-internal",
+  "jobId": "bquxjob_54e96a2_166be5c8ba7",
+  "location": "US"
+ },
+ "configuration": {
+  "jobType": "QUERY",
+  "query": {
+   "query": "select t1.id\nfrom test_dataset.table1 t1 join test_dataset.table2 t2 on t2.fk1 = t1.id join test_dataset.table3 t3 on t2.id = t3.fk2",
+   "destinationTable": {
+    "projectId": "chemikadze-internal",
+    "datasetId": "_05463c5a8a84bcb580141c8b1302a5084caef5c5",
+    "tableId": "anon4f6185f292b3a9400d7ea7fd849620b85aab86a6"
+   },
+   "createDisposition": "CREATE_IF_NEEDED",
+   "writeDisposition": "WRITE_TRUNCATE",
+   "priority": "INTERACTIVE",
+   "allowLargeResults": false,
+   "useQueryCache": true,
+   "useLegacySql": false
+  }
+ },
+ "status": {
+  "state": "DONE"
+ },
+ "statistics": {
+  "creationTime": "1540792054180",
+  "startTime": "1540792054302",
+  "endTime": "1540792055006",
+  "totalBytesProcessed": "0",
+  "query": {
+   "queryPlan": [
+    {
+     "name": "S00: Input",
+     "id": "0",
+     "startMs": "1540792054524",
+     "endMs": "1540792054558",
+     "waitRatioAvg": 0.017241379310344827,
+     "waitMsAvg": "1",
+     "waitRatioMax": 0.017241379310344827,
+     "waitMsMax": "1",
+     "readRatioAvg": 0.0,
+     "readMsAvg": "0",
+     "readRatioMax": 0.0,
+     "readMsMax": "0",
+     "computeRatioAvg": 0.05172413793103448,
+     "computeMsAvg": "3",
+     "computeRatioMax": 0.05172413793103448,
+     "computeMsMax": "3",
+     "writeRatioAvg": 0.5172413793103449,
+     "writeMsAvg": "30",
+     "writeRatioMax": 0.5172413793103449,
+     "writeMsMax": "30",
+     "shuffleOutputBytes": "0",
+     "shuffleOutputBytesSpilled": "0",
+     "recordsRead": "0",
+     "recordsWritten": "0",
+     "parallelInputs": "1",
+     "completedParallelInputs": "1",
+     "status": "COMPLETE",
+     "steps": [
+      {
+       "kind": "READ",
+       "substeps": [
+        "$1:fk2",
+        "FROM test_dataset.table3"
+       ]
+      },
+      {
+       "kind": "WRITE",
+       "substeps": [
+        "$1",
+        "TO __stage00_output",
+        "BY HASH($1)"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "S01: Input",
+     "id": "1",
+     "startMs": "1540792054567",
+     "endMs": "1540792054602",
+     "waitRatioAvg": 0.5517241379310345,
+     "waitMsAvg": "32",
+     "waitRatioMax": 0.5517241379310345,
+     "waitMsMax": "32",
+     "readRatioAvg": 0.0,
+     "readMsAvg": "0",
+     "readRatioMax": 0.0,
+     "readMsMax": "0",
+     "computeRatioAvg": 0.06896551724137931,
+     "computeMsAvg": "4",
+     "computeRatioMax": 0.06896551724137931,
+     "computeMsMax": "4",
+     "writeRatioAvg": 0.5172413793103449,
+     "writeMsAvg": "30",
+     "writeRatioMax": 0.5172413793103449,
+     "writeMsMax": "30",
+     "shuffleOutputBytes": "0",
+     "shuffleOutputBytesSpilled": "0",
+     "recordsRead": "0",
+     "recordsWritten": "0",
+     "parallelInputs": "1",
+     "completedParallelInputs": "1",
+     "status": "COMPLETE",
+     "steps": [
+      {
+       "kind": "READ",
+       "substeps": [
+        "$20:id, $21:fk1",
+        "FROM test_dataset.table2"
+       ]
+      },
+      {
+       "kind": "WRITE",
+       "substeps": [
+        "$20, $21",
+        "TO __stage01_output",
+        "BY HASH($21)"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "S03: Coalesce",
+     "id": "3",
+     "startMs": "1540792054650",
+     "endMs": "1540792054686",
+     "inputStages": [
+      "1"
+     ],
+     "waitRatioAvg": 0.0,
+     "waitMsAvg": "0",
+     "waitRatioMax": 0.0,
+     "waitMsMax": "0",
+     "readRatioAvg": 0.0,
+     "readMsAvg": "0",
+     "readRatioMax": 0.0,
+     "readMsMax": "0",
+     "computeRatioAvg": 0.0,
+     "computeMsAvg": "0",
+     "computeRatioMax": 0.0,
+     "computeMsMax": "0",
+     "writeRatioAvg": 0.0,
+     "writeMsAvg": "0",
+     "writeRatioMax": 0.0,
+     "writeMsMax": "0",
+     "shuffleOutputBytes": "0",
+     "shuffleOutputBytesSpilled": "0",
+     "recordsRead": "0",
+     "recordsWritten": "0",
+     "parallelInputs": "100",
+     "completedParallelInputs": "0",
+     "status": "COMPLETE",
+     "steps": [
+      {
+       "kind": "READ",
+       "substeps": [
+        "FROM __stage01_output"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "S04: Coalesce",
+     "id": "4",
+     "startMs": "1540792054650",
+     "endMs": "1540792054689",
+     "inputStages": [
+      "0"
+     ],
+     "waitRatioAvg": 0.0,
+     "waitMsAvg": "0",
+     "waitRatioMax": 0.0,
+     "waitMsMax": "0",
+     "readRatioAvg": 0.0,
+     "readMsAvg": "0",
+     "readRatioMax": 0.0,
+     "readMsMax": "0",
+     "computeRatioAvg": 0.0,
+     "computeMsAvg": "0",
+     "computeRatioMax": 0.0,
+     "computeMsMax": "0",
+     "writeRatioAvg": 0.0,
+     "writeMsAvg": "0",
+     "writeRatioMax": 0.0,
+     "writeMsMax": "0",
+     "shuffleOutputBytes": "0",
+     "shuffleOutputBytesSpilled": "0",
+     "recordsRead": "0",
+     "recordsWritten": "0",
+     "parallelInputs": "100",
+     "completedParallelInputs": "0",
+     "status": "COMPLETE",
+     "steps": [
+      {
+       "kind": "READ",
+       "substeps": [
+        "FROM __stage00_output"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "S05: Join",
+     "id": "5",
+     "startMs": "1540792054671",
+     "endMs": "1540792054682",
+     "inputStages": [
+      "4",
+      "3"
+     ],
+     "waitRatioAvg": 0.41379310344827586,
+     "waitMsAvg": "24",
+     "waitRatioMax": 0.41379310344827586,
+     "waitMsMax": "24",
+     "readRatioAvg": 0.0,
+     "readMsAvg": "0",
+     "readRatioMax": 0.0,
+     "readMsMax": "0",
+     "computeRatioAvg": 0.06896551724137931,
+     "computeMsAvg": "4",
+     "computeRatioMax": 0.06896551724137931,
+     "computeMsMax": "4",
+     "writeRatioAvg": 0.08620689655172414,
+     "writeMsAvg": "5",
+     "writeRatioMax": 0.08620689655172414,
+     "writeMsMax": "5",
+     "shuffleOutputBytes": "0",
+     "shuffleOutputBytesSpilled": "0",
+     "recordsRead": "0",
+     "recordsWritten": "0",
+     "parallelInputs": "1",
+     "completedParallelInputs": "1",
+     "status": "COMPLETE",
+     "steps": [
+      {
+       "kind": "READ",
+       "substeps": [
+        "$10:id",
+        "FROM test_dataset.table1"
+       ]
+      },
+      {
+       "kind": "READ",
+       "substeps": [
+        "$20, $21",
+        "FROM __stage03_output"
+       ]
+      },
+      {
+       "kind": "READ",
+       "substeps": [
+        "$1",
+        "FROM __stage04_output"
+       ]
+      },
+      {
+       "kind": "JOIN",
+       "substeps": [
+        "INNER HASH JOIN EACH  WITH ALL  ON $31 = $1"
+       ]
+      },
+      {
+       "kind": "JOIN",
+       "substeps": [
+        "INNER HASH JOIN EACH  WITH ALL  ON $10 = $21"
+       ]
+      },
+      {
+       "kind": "WRITE",
+       "substeps": [
+        "$40",
+        "TO __stage05_output"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "S06: Output",
+     "id": "6",
+     "startMs": "1540792054744",
+     "endMs": "1540792054812",
+     "inputStages": [
+      "5"
+     ],
+     "waitRatioAvg": 0.9310344827586207,
+     "waitMsAvg": "54",
+     "waitRatioMax": 0.9310344827586207,
+     "waitMsMax": "54",
+     "readRatioAvg": 0.0,
+     "readMsAvg": "0",
+     "readRatioMax": 0.0,
+     "readMsMax": "0",
+     "computeRatioAvg": 0.13793103448275862,
+     "computeMsAvg": "8",
+     "computeRatioMax": 0.13793103448275862,
+     "computeMsMax": "8",
+     "writeRatioAvg": 1.0,
+     "writeMsAvg": "58",
+     "writeRatioMax": 1.0,
+     "writeMsMax": "58",
+     "shuffleOutputBytes": "0",
+     "shuffleOutputBytesSpilled": "0",
+     "recordsRead": "0",
+     "recordsWritten": "0",
+     "parallelInputs": "1",
+     "completedParallelInputs": "1",
+     "status": "COMPLETE",
+     "steps": [
+      {
+       "kind": "READ",
+       "substeps": [
+        "$40",
+        "FROM __stage05_output"
+       ]
+      },
+      {
+       "kind": "WRITE",
+       "substeps": [
+        "$40",
+        "TO __stage06_output"
+       ]
+      }
+     ]
+    }
+   ],
+   "estimatedBytesProcessed": "0",
+   "timeline": [
+    {
+     "elapsedMs": "779",
+     "totalSlotMs": "152",
+     "pendingUnits": "200",
+     "completedUnits": "4"
+    }
+   ],
+   "totalPartitionsProcessed": "0",
+   "totalBytesProcessed": "0",
+   "totalBytesBilled": "0",
+   "billingTier": 1,
+   "totalSlotMs": "264",
+   "cacheHit": false,
+   "referencedTables": [
+    {
+     "projectId": "chemikadze-internal",
+     "datasetId": "test_dataset",
+     "tableId": "table2"
+    },
+    {
+     "projectId": "chemikadze-internal",
+     "datasetId": "test_dataset",
+     "tableId": "table1"
+    },
+    {
+     "projectId": "chemikadze-internal",
+     "datasetId": "test_dataset",
+     "tableId": "table3"
+    }
+   ],
+   "statementType": "SELECT"
+  }
+ },
+ "user_email": "chemikadze@gmail.com"
+}
